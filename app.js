@@ -25,7 +25,7 @@ app.post('/callback', function(req, res) {
                     return;
                 }
                 // 「くっころ」という単語がテキストに含まれている場合のみ返事をする
-                if (req.body['events'][0]['message']['text'].indexOf('やほ') == -1) {
+                if (req.body['events'][0]['message']['text'].indexOf('くっころ') == -1) {
                     return;
                 }
 
@@ -65,7 +65,7 @@ app.post('/callback', function(req, res) {
                 'replyToken': req.body['events'][0]['replyToken'],
                 "messages": [{
                     "type": "text",
-                    "text": displayName + '...！\nやっ...やりおるな！'
+                    "text": displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！'
                 }]
             };
 
