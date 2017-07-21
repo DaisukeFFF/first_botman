@@ -48,7 +48,23 @@ app.post('/callback', function(req, res) {
                         }
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
-                    callback('貴様ら');
+
+                                        var user_id = req.body['events'][0]['source']['userId'];
+                    var get_profile_options = {
+                        url: 'https://api.line.me/v2/bot/profile/' + user_id,
+                        proxy: process.env.FIXIE_URL,
+                        json: true,
+                        headers: {
+                            'Authorization': 'Bearer {' + process.env.LINE_CHANNEL_ACCESS_TOKEN + '}'
+                        }
+                    };
+                    request.get(get_profile_options, function(error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            callback(body['displayName']);
+                        }
+                    });
+
+                    //callback('貴様ら');
                 }
             },
         ],
