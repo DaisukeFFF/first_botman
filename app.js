@@ -25,7 +25,7 @@ app.post('/callback', function(req, res) {
                     return;
                 }
                 // 「くっころ」という単語がテキストに含まれている場合のみ返事をする
-                if (req.body['events'][0]['message']['text'].indexOf('くっころ') == -1) {
+                if (req.body['events'][0]['message']['text'].indexOf('やほ') == -1) {
                     return;
                 }
 
@@ -49,22 +49,7 @@ app.post('/callback', function(req, res) {
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
 
-                                        var user_id = req.body['events'][0]['source']['userId'];
-                    var get_profile_options = {
-                        url: 'https://api.line.me/v2/bot/profile/' + user_id,
-                        proxy: process.env.FIXIE_URL,
-                        json: true,
-                        headers: {
-                            'Authorization': 'Bearer {' + process.env.LINE_CHANNEL_ACCESS_TOKEN + '}'
-                        }
-                    };
-                    request.get(get_profile_options, function(error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                            callback(body['displayName']);
-                        }
-                    });
-
-                    //callback('貴様ら');
+                    callback('お主ら');
                 }
             },
         ],
@@ -80,7 +65,7 @@ app.post('/callback', function(req, res) {
                 'replyToken': req.body['events'][0]['replyToken'],
                 "messages": [{
                     "type": "text",
-                    "text": displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！'
+                    "text": displayName + '...！\nやっ...やりおるな！'
                 }]
             };
 
