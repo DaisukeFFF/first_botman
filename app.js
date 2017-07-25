@@ -58,7 +58,7 @@ app.post('/callback', function(req, res) {
         ],
         function(displayName) {
             console.log('check');
-            if (req.body['events'][0]['message']['text']==='ヘルプ') {
+            if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') != -1 ) {
                console.log('Heyhey');
                display = 'ヘルプ';
             }else{
