@@ -58,12 +58,12 @@ app.post('/callback', function(req, res) {
         ],
         function(displayName) {
             console.log('check');
-            if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') != -1 ) {
-               console.log('Heyhey');
-               display = 'ヘルプ';
-            }else{
+            //if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') != -1 ) {
+            //   console.log('Heyhey');
+            //   display = 'ヘルプ';
+            //}else{
                 display = displayName + '!\nよっ！日本の宝!!';
-            }
+            //}
 
             //ヘッダーを定義
             var headers = {
