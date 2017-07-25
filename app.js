@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
 var crypto = require("crypto");
-var async = require('async');
+const async = require('async');
 
 app.set('port', (process.env.PORT || 8000));
 // JSONの送信を許可
@@ -49,7 +49,7 @@ app.post('/callback', function(req, res) {
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
                         callback('お主ら');
-                } else if ('room' == req.body['events'][0]['source']['type']) {
+                } else if ('group' == req.body['events'][0]['source']['type']) {
                         callback('貴様ら');
                 }
             },
