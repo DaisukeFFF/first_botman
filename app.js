@@ -30,8 +30,9 @@ app.post('/callback', function(req, res) {
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') == -1) {
                     if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') == -1) {
                         callback('ヘルプ');
+                    }else{
+                        return;
                     }
-                    return;
                 }
 
                 // 1対1のチャットの場合は相手のユーザ名で返事をする
