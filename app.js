@@ -58,9 +58,11 @@ app.post('/callback', function(req, res) {
         ],
         function(displayName) {
             console.log('check');
-            if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') == -1) {
+            if (req.body['events'][0]['message']['text']==='ヘルプ') {
                console.log('Heyhey');
-               displayName = 'ヘルプ';
+               display = 'ヘルプ';
+            }else{
+                display = displayName + '!\nよっ！日本の宝!!';
             }
 
             //ヘッダーを定義
@@ -74,7 +76,7 @@ app.post('/callback', function(req, res) {
                 'replyToken': req.body['events'][0]['replyToken'],
                 "messages": [{
                     "type": "text",
-                    "text": displayName + '!\nよっ！日本の宝!!'
+                    "text": display;
                 }]
             };
 
