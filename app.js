@@ -65,7 +65,8 @@ app.post('/callback', function(req, res) {
             console.log('check');
                 display = displayName + '!\nよっ！日本の宝!!';
                 if(displayName === 'ヘルプ'){
-                    display = displayName;
+                    display = 'お呼びですか?¥n「ほめて」と言われたら褒めます。¥n'+
+                                '今はただの褒め上手ですが、そのうち色々覚えていきますよ！';
                 }
 
             //ヘッダーを定義
