@@ -59,8 +59,12 @@ app.post('/callback', function(req, res) {
                                 'Authorization': 'Bearer {' + process.env.LINE_CHANNEL_ACCESS_TOKEN + '}'
                             }
                         };
-                        callback(body['displayName']);
-                    }else{
+                        request.get(get_profile_options, function(error, response, body) {
+                            if (!error && response.statusCode == 200) {
+                                callback(body['displayName']);
+                            }
+                        };
+                    } else{
                         callback('お主ら');
                     }
                 }
