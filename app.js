@@ -28,6 +28,7 @@ app.post('/callback', function(req, res) {
 
                 // 「ほめて」という単語がテキストに含まれている場合のみ返事をする
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') == -1) {
+                    callback('ヘルプ');
                     console.log('Errorrrrr');
                     return;
                 }
