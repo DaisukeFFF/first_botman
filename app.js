@@ -28,15 +28,12 @@ app.post('/callback', function(req, res) {
 
                 // 「ほめて」という単語がテキストに含まれている場合のみ返事をする
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') == -1) {
-                    if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') == -1) {
-                        callback('ヘルプ');
-                    }else{
-                        return;
-                    }
+                    consele.log('Errorrrrr');
+                    return;
                 }
 
                 // 1対1のチャットの場合は相手のユーザ名で返事をする
-                // グループチャットの場合はユーザ名が分からないので、「貴様ら」で返事をする
+                // グループチャットの場合はユーザ名が分からないので、「お主ら」で返事をする
                 if (req.body['events'][0]['source']['type'] == 'user') {
                     // ユーザIDでLINEのプロファイルを検索して、ユーザ名を取得する
                     var user_id = req.body['events'][0]['source']['userId'];
