@@ -49,21 +49,7 @@ app.post('/callback', function(req, res) {
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
                     if(req.body['events'][0]['source']['userId']) {
-                        // ユーザIDでLINEのプロファイルを検索して、ユーザ名を取得する
-                        var user_ida = req.body['events'][0]['source']['userId'];
-                        var get_profile_options = {
-                            url: 'https://api.line.me/v2/bot/profile/' + user_ida,
-                            proxy: process.env.FIXIE_URL,
-                            json: true,
-                            headers: {
-                                'Authorization': 'Bearer {' + process.env.LINE_CHANNEL_ACCESS_TOKEN + '}'
-                            }
-                        };
-                        request.get(get_profile_options, function(error, response, body) {
-                            if (!error && response.statusCode == 200) {
-                                callback('aaaaa');
-                            }
-                        };
+                        callback(req.body['events'][0]['source']['type']);
                     } else{
                         callback('お主ら');
                     }
