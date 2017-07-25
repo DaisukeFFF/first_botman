@@ -28,7 +28,7 @@ app.post('/callback', function(req, res) {
 
                 // 「ほめて」という単語がテキストに含まれている場合のみ返事をする
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') == -1) {
-                    consele.log('Errorrrrr');
+                    console.log('Errorrrrr');
                     return;
                 }
 
@@ -55,7 +55,6 @@ app.post('/callback', function(req, res) {
                 } else if ('group' == req.body['events'][0]['source']['type']) {
                         callback('お主ら');
                 }
-                console.log('hey!!');
             },
         ],
         function(displayName) {
