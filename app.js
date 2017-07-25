@@ -28,8 +28,6 @@ app.post('/callback', function(req, res) {
 
                 // 「ほめて」という単語がテキストに含まれている場合のみ返事をする
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') == -1) {
-                    callback('ヘルプ');
-                    console.log('Errorrrrr');
                     return;
                 }
 
@@ -48,25 +46,19 @@ app.post('/callback', function(req, res) {
                     };
                     request.get(get_profile_options, function(error, response, body) {
                         if (!error && response.statusCode == 200) {
-                            var pbody = JSON.parse(body);
-                            console.log(body.displayName);
-                            var simei = pbody.displayName;
-                            //callback(body['displayName']);
+                            callback(body['displayName']);
                         }
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
-                        var simei = '諸君';
-                        //callback('諸君');
+                        callback('諸君');
                 } else if ('group' == req.body['events'][0]['source']['type']) {
-                        var simei = 'お主ら';
-                        //callback('お主ら');
+                        callback('お主ら');
                 }
-
-                callback(simei + '!\nよっ！日本の宝!!');
-
             },
         ],
         function(displayName) {
+
+            
             //ヘッダーを定義
             var headers = {
                 'Content-Type': 'application/json',
@@ -78,7 +70,7 @@ app.post('/callback', function(req, res) {
                 'replyToken': req.body['events'][0]['replyToken'],
                 "messages": [{
                     "type": "text",
-                    "text": displayName
+                    "text": displayName + '!\nよっ！日本の宝!!'
                 }]
             };
 
