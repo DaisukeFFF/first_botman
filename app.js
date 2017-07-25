@@ -48,14 +48,20 @@ app.post('/callback', function(req, res) {
                     };
                     request.get(get_profile_options, function(error, response, body) {
                         if (!error && response.statusCode == 200) {
-                            callback(body['displayName']);
+                            var simei = body['displayName'];
+                            //callback(body['displayName']);
                         }
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
-                        callback('諸君');
+                        var simei = '諸君';
+                        //callback('諸君');
                 } else if ('group' == req.body['events'][0]['source']['type']) {
-                        callback('お主ら');
+                        var simei = 'お主ら';
+                        //callback('お主ら');
                 }
+
+                callback(simei + '!\nよっ！日本の宝!!');
+
             },
         ],
         function(displayName) {
@@ -70,7 +76,7 @@ app.post('/callback', function(req, res) {
                 'replyToken': req.body['events'][0]['replyToken'],
                 "messages": [{
                     "type": "text",
-                    "text": displayName + '!\nよっ！日本の宝!!'
+                    "text": displayName
                 }]
             };
 
