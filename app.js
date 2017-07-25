@@ -28,6 +28,10 @@ app.post('/callback', function(req, res) {
 
                 // 「ほめて」という単語がテキストに含まれている場合のみ返事をする
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') == -1) {
+                    if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') != -1 ) {
+                        console.log('Heyhey');
+                        callback('ヘルプ');
+                    }
                     return;
                 }
 
@@ -58,12 +62,8 @@ app.post('/callback', function(req, res) {
         ],
         function(displayName) {
             console.log('check');
-            if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') != -1 ) {
-               console.log('Heyhey');
-               display = 'ヘルプ';
-            }else{
-                display = displayName + '!\nよっ！日本の宝!!';
-            }
+            display = displayName + '!\nよっ！日本の宝!!';
+            
 
             //ヘッダーを定義
             var headers = {
