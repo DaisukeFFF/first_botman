@@ -58,12 +58,15 @@ app.post('/callback', function(req, res) {
                 } else if ('group' == req.body['events'][0]['source']['type']) {
                         callback('お主ら');
                 }
+
             },
         ],
         function(displayName) {
             console.log('check');
-            display = displayName + '!\nよっ！日本の宝!!';
-            
+                display = displayName + '!\nよっ！日本の宝!!';
+                if(displayName === 'ヘルプ'){
+                    display = displayName;
+                }
 
             //ヘッダーを定義
             var headers = {
