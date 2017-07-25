@@ -49,7 +49,7 @@ app.post('/callback', function(req, res) {
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
                     if(req.body['events'][0]['source']['userId']) {
-                        callback('へいよー');
+                        callback(body['displayName']);
                     }else{
                     callback('お主ら');
                     }
