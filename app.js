@@ -48,9 +48,9 @@ app.post('/callback', function(req, res) {
                         }
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
-                        callback('お主ら');
+                        callback('諸君');
                 } else if ('group' == req.body['events'][0]['source']['type']) {
-                        callback('貴様ら');
+                        callback('お主ら');
                 }
             },
         ],
