@@ -55,6 +55,7 @@ app.post('/callback', function(req, res) {
                 } else if ('group' == req.body['events'][0]['source']['type']) {
                         callback('お主ら');
                 }
+                console.log('hey!!');
             },
         ],
         function(displayName) {
