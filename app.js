@@ -48,9 +48,9 @@ app.post('/callback', function(req, res) {
                     };
                     request.get(get_profile_options, function(error, response, body) {
                         if (!error && response.statusCode == 200) {
-                            var simei = JSON.parse(body.displayName);
+                            var pbody = JSON.parse(body);
                             console.log(body.displayName);
-
+                            var simei = pbody.displayName;
                             //callback(body['displayName']);
                         }
                     });
