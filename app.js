@@ -24,8 +24,13 @@ app.post('/callback', function(req, res) {
                 if ((req.body['events'][0]['type'] != 'message') || (req.body['events'][0]['message']['type'] != 'text')) {
                     return;
                 }
+                // 「ヘルプ」という単語がテキストに含まれている場合のみ返事をする
+
                 // 「ほめて」という単語がテキストに含まれている場合のみ返事をする
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') == -1) {
+                    if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') == -1) {
+                        callback('ヘルプ');
+                    }
                     return;
                 }
 
