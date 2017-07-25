@@ -49,7 +49,7 @@ app.post('/callback', function(req, res) {
                     });
                 } else if ('room' == req.body['events'][0]['source']['type']) {
                     if(req.body['events'][0]['source']['userId']) {
-                        callback(body['event'][0]['source']['userId']);
+                        callback('へいよー');
                     }else{
                     callback('お主ら');
                     }
@@ -68,7 +68,7 @@ app.post('/callback', function(req, res) {
                 'replyToken': req.body['events'][0]['replyToken'],
                 "messages": [{
                     "type": "text",
-                    "text": displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！'
+                    "text": displayName + '!\nよっ！日本の宝!!'
                 }]
             };
 
