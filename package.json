@@ -9,9 +9,10 @@
   "author": "k-nakayama-pg",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "request": "^2.75.0",
-    "async": "^2.1.2"
+    "async": "^2.5.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "linebot-forked": "0.0.2",
+    "request": "^2.81.0"
   }
 }
