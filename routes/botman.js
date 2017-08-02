@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var crypto = require("crypto");
 const async = require('async');
-//const bot = require('../lib/lineBot');
+const bot = require('../lib/lineBot');
 const router = express.Router();
 
 
@@ -23,7 +23,6 @@ router.post('/', function(req, res) {
                 // 「ほめて」という単語がテキストに含まれている場合のみ返事をする
                 if (req.body['events'][0]['message']['text'].indexOf('ほめて') === -1) {
                     if (req.body['events'][0]['message']['text'].indexOf('ヘルプ') !== -1 ) {
-                        console.log('Heyhey');
                         callback('ヘルプ');
                     }
                     return;
@@ -96,6 +95,11 @@ router.post('/', function(req, res) {
             });
         }
     );
+});
+
+// 友達追加
+bot.on('follow', (event) => {
+   event.reply('フォローありがとう！！');
 });
 
 // 署名検証
