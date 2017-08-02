@@ -99,7 +99,7 @@ router.post('/', function(req, res) {
 
 // 友達追加
 bot.on('follow', (event) => {
-   event.reply('フォローありがとう！！');
+    console.log('follow success!');
 });
 
 // 署名検証
