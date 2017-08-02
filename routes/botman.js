@@ -98,9 +98,9 @@ router.post('/', function(req, res) {
 });
 
 // 友達追加
-//bot.on('follow', (event) => {
-//    console.log('follow success!');
-//});
+bot.on('follow', (event) => {
+    console.log('follow success!');
+});
 
 // 署名検証
 function validate_signature(signature, body) {
