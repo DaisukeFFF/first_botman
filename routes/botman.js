@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var crypto = require("crypto");
 const async = require('async');
-//const bot = require('../lib/lineBot');
+const bot = require('../lib/lineBot');
 const router = express.Router();
 
 
