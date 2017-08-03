@@ -27,6 +27,18 @@ router.post('/', parser, (req, res, next) => {
     res.status(200).end();
 });
 
+// 友達追加
+bot.on('follow', (event) => {
+        console.log('follow success!');
+    }).catch((err) => { console.log(err); return Error(err);
+});
+
+// ブロック
+bot.on('unfollow', (event) => {
+    console.log('unfollow success');
+  }).catch((err) => { console.log(err); return Error(err);
+});
+
 // router.post('/', function(req, res) {
 //     async.waterfall([
 //             function(callback) {
@@ -115,11 +127,6 @@ router.post('/', parser, (req, res, next) => {
 //         }
 //     );
 // });
-
-// 友達追加
-bot.on('follow', (event) => {
-    console.log('follow success!');
-});
 
 // 署名検証
 function validate_signature(signature, body) {
