@@ -28,10 +28,9 @@ router.post('/', parser, (req, res, next) => {
 });
 
 // 友達追加
-// bot.on('follow', (event) => {
-//         console.log('follow success!');
-//     }).catch((err) => { console.log(err); return Error(err);
-// });
+bot.on('follow', (event) => {
+        console.log('follow success!');
+    }).catch((err) => { console.log(err); return Error(err);});
 
 // // ブロック
 // bot.on('unfollow', (event) => {
