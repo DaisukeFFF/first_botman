@@ -8,7 +8,6 @@ const router = express.Router();
 
 
 const parser = bodyParser.json({
-    console.log('aaaa');
     verify: (req, res, buf, encoding) => {
         req.rawBody = buf.toString(encoding);
     }
@@ -16,6 +15,7 @@ const parser = bodyParser.json({
 
 router.post('/', parser, (req, res, next) => {
     console.log(req.body);
+    console.log(parser);
     if (req.body.events === '') {
         return;
     }
