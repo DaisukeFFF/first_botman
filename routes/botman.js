@@ -8,6 +8,7 @@ const router = express.Router();
 
 
 const parser = bodyParser.json({
+    console.log('aaaa');
     verify: (req, res, buf, encoding) => {
         req.rawBody = buf.toString(encoding);
     }
@@ -18,6 +19,7 @@ router.post('/', parser, (req, res, next) => {
     if (req.body.events === '') {
         return;
     }
+    console.log('bbbb');
     if (!bot.verify(req.rawBody, req.get('X-Line-Signature'))) {
         return res.sendStatus(400);
     }
