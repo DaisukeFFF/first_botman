@@ -52,11 +52,18 @@ bot.on('message', (event) => {
     }
     if(event.message.text.indexOf('ほめて') !== -1){
         //event.reply('よっ！若頭！');
-        console.log(getRandom(1,4));
-        console.log(getRandom(1,4));
-        console.log(getRandom(1,4));
-        console.log(getRandom(1,4));
-        
+        const num = getRandom(1,3);
+        switch (num){
+            case 1:
+                event.reply('素晴らしい！君は日本の宝だ！');
+            case 2:
+                event.reply(event.source.profile().displayName + 'さん！\nさすがっすね！');
+            case 3:
+                event.reply('よっ！若頭！');
+            case 4:
+                event.reply(event.source.profile().displayName +'さん\n今日もお疲れ様！夜はゆっくり休んでくださいね');
+        }
+
     }else if(event.message.text === 'ヘルプ'){
         event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
                      '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
