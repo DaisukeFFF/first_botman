@@ -7,6 +7,12 @@ const bot = require('../lib/lineBot');
 const router = express.Router();
 
 
+const parser = bodyParser.json({
+    verify: (req, res, buf, encoding) => {
+        req.rawBody = buf.toString(encoding);
+    }
+});
+
 router.post('/', parser, (req, res, next) => {
     console.log(req.body);
     if (req.body.events === '') {
@@ -16,7 +22,7 @@ router.post('/', parser, (req, res, next) => {
         return res.sendStatus(400);
     }
     bot.parse(req.body);
-
+    console.log('test');
     res.set('Content-Type', 'text/plain');
     res.status(200).end();
 });
