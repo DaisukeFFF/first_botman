@@ -23,6 +23,7 @@ router.post('/', parser, (req, res, next) => {
     if (!bot.verify(req.rawBody, req.get('X-Line-Signature'))) {
         return res.sendStatus(400);
     }
+    console.log('cccc');
     bot.parse(req.body);
     console.log('test');
     res.set('Content-Type', 'text/plain');
@@ -37,6 +38,18 @@ bot.on('follow', (event) => {
 // // ブロック
 bot.on('unfollow', (event) => {
     console.log('unfollow success');
+});
+
+bot.on('message', (event) => {
+    event.source.profile().then((lineProfile) =>{
+        return praise(lineProfile);
+    }).catch((err) => {
+        throw new Error(err);
+    })
+});
+
+const praise = lineProfile => new Promise((resolve, reject) => {
+    console.log(lineProfile);
 });
 
 // router.post('/', function(req, res) {
