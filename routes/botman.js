@@ -45,13 +45,18 @@ bot.on('message', (event) => {
     if(event.message.type !== 'text'){
         return;
     }
+    if(event.message.text.indexOf('ほめて') !== -1){
+        event.reply('よっ！若頭！');
+    }else if(event.message.text === 'ヘルプ'){
+        event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
+                     '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
+    }
     //「ほめて」という単語にのみ反応
-    event.message.
-    event.source.profile().then((lineProfile) =>{
-        return praise(lineProfile);
-    }).catch((err) => {
-        throw new Error(err);
-    })
+    // event.source.profile().then((lineProfile) =>{
+    //     return praise(lineProfile);
+    // }).catch((err) => {
+    //     throw new Error(err);
+    // })
 });
 
 // router.post('/', function(req, res) {
