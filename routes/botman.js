@@ -8,16 +8,17 @@ const router = express.Router();
 
 
 router.post('/', parser, (req, res, next) => {
-  if (req.body.events === '') {
-    return;
-  }
-  if (!bot.verify(req.rawBody, req.get('X-Line-Signature'))) {
-    return res.sendStatus(400);
-  }
-  bot.parse(req.body);
+    console.log(req.body);
+    if (req.body.events === '') {
+        return;
+    }
+    if (!bot.verify(req.rawBody, req.get('X-Line-Signature'))) {
+        return res.sendStatus(400);
+    }
+    bot.parse(req.body);
 
-  res.set('Content-Type', 'text/plain');
-  res.status(200).end();
+    res.set('Content-Type', 'text/plain');
+    res.status(200).end();
 });
 
 // router.post('/', function(req, res) {
