@@ -13,6 +13,11 @@ const parser = bodyParser.json({
     }
 });
 
+//minからmaxまでの乱数を返す関数
+var getRandom = (min, max) => {
+    return Math.round(Math.random() * (max - min + 1)) + min;
+}
+
 router.post('/', parser, (req, res, next) => {
     console.log(req.body);
     console.log(parser);
@@ -41,12 +46,17 @@ bot.on('unfollow', (event) => {
 });
 
 bot.on('message', (event) => {
-    console.log(event);
+    //console.log(event);
     if(event.message.type !== 'text'){
         return;
     }
     if(event.message.text.indexOf('ほめて') !== -1){
-        event.reply('よっ！若頭！');
+        //event.reply('よっ！若頭！');
+        console.log(getRandom(1,4));
+        console.log(getRandom(1,4));
+        console.log(getRandom(1,4));
+        console.log(getRandom(1,4));
+        
     }else if(event.message.text === 'ヘルプ'){
         event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
                      '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
