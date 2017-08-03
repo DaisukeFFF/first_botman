@@ -41,15 +41,17 @@ bot.on('unfollow', (event) => {
 });
 
 bot.on('message', (event) => {
+    console.log(event);
+    if(event.message.type !== 'text'){
+        return;
+    }
+    //「ほめて」という単語にのみ反応
+    event.message.
     event.source.profile().then((lineProfile) =>{
         return praise(lineProfile);
     }).catch((err) => {
         throw new Error(err);
     })
-});
-
-const praise = lineProfile => new Promise((resolve, reject) => {
-    console.log(lineProfile);
 });
 
 // router.post('/', function(req, res) {
