@@ -13,8 +13,8 @@ const parser = bodyParser.json({
     }
 });
 
-const getGruopMemberProfile = (groupId, userId) => {
-    return bot.get('/group/'+groupId +'/member/'+ userId).then(function (res) {
+const getGruopMemberProfile = (source) => {
+    return bot.get('/group/'+source.groupId +'/member/'+ source.userId).then(function (res) {
         return res.json();
     });
 }
@@ -54,29 +54,30 @@ bot.on('message', (event) => {
     if(event.message.type !== 'text'){
         return;
     }
-    event.source.profile().then((lineProfile) =>{
-        if(event.message.text.indexOf('ほめて') !== -1){
-                console.log(lineProfile);
-                const num = getRandom(1,3);
-                switch (num){ 
-                    case 1:
-                        event.reply('素晴らしい！君は日本の宝だ！');
-                    case 2:
-                        event.reply(lineProfile.displayName + 'さん！\nさすがっすね！');
-                    case 3:
-                        event.reply('よっ！若頭！');
-                    case 4:
-                        event.reply(lineProfile.displayName +'さん\n今日もお疲れ様！夜はゆっくり休んでくださいね');
-                }
-        }else if(event.message.text === 'ヘルプ'){
-            event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
+    if(event.source.type !== 'user'){
+        const lineProfile = getGruopMemberProfile(event.source);
+    }else{
+        const lineProfile = event.source.profile();
+    }
+    if(event.message.text.indexOf('ほめて') !== -1){
+            console.log(lineProfile);
+            const num = getRandom(1,3);
+            switch (num){ 
+            case 1:
+                event.reply('素晴らしい！君は日本の宝だ！');
+            case 2:
+                event.reply(lineProfile.displayName + 'さん！\nさすがっすね！');
+            case 3:
+                event.reply('よっ！若頭！');
+            case 4:
+                event.reply(lineProfile.displayName +'さん\n今日もお疲れ様！夜はゆっくり休んでくださいね');
+            }
+    }else if(event.message.text === 'ヘルプ'){
+        event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
                          '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
-        }else if(event.message.text === 'くっころ'){
-            event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
-        }
-    }).catch((err) => {
-         throw new Error(err);
-    });
+    }else if(event.message.text === 'くっころ'){
+        event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
+    }
     
 });
 
