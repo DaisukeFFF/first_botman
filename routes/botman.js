@@ -13,7 +13,7 @@ const parser = bodyParser.json({
     }
 });
 
-const getGruopMemberProfile = (groupId, userId){
+const getGruopMemberProfile = (groupId, userId) => {
     return bot.get('/group/'+groupId +'/member/'+ userId).then(function (res) {
         return res.json();
     });
@@ -58,7 +58,7 @@ bot.on('message', (event) => {
         if(event.message.text.indexOf('ほめて') !== -1){
                 console.log(lineProfile);
                 const num = getRandom(1,3);
-                switch (num){
+                switch (num){ 
                     case 1:
                         event.reply('素晴らしい！君は日本の宝だ！');
                     case 2:
