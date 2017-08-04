@@ -13,6 +13,12 @@ const parser = bodyParser.json({
     }
 });
 
+const getGruopMemberProfile = (groupId, userId){
+    return bot.get('/group/'+groupId +'/member/'+ userId).then(function (res) {
+        return res.json();
+    });
+}
+
 //minからmaxまでの乱数を返す関数
 var getRandom = (min, max) => {
     return Math.round(Math.random() * (max - min + 1)) + min;
@@ -24,11 +30,9 @@ router.post('/', parser, (req, res, next) => {
     if (req.body.events === '') {
         return;
     }
-    console.log('bbbb');
     if (!bot.verify(req.rawBody, req.get('X-Line-Signature'))) {
         return res.sendStatus(400);
     }
-    console.log('cccc');
     bot.parse(req.body);
     console.log('test');
     res.set('Content-Type', 'text/plain');
@@ -46,7 +50,7 @@ bot.on('unfollow', (event) => {
 });
 
 bot.on('message', (event) => {
-    //console.log(event);
+    console.log(event);
     if(event.message.type !== 'text'){
         return;
     }
