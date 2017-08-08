@@ -29,7 +29,7 @@ const setlineProfile = (source) => {
 };
 
 const returnMessage = (event) =>{
-    setDisplayName(event.source).then( (lineProfile) =>{
+    setlineProfile(event.source).then( (lineProfile) =>{
         console.log(lineProfile);
         if(event.message.text.indexOf('ほめて') !== -1){
                 //console.log(event.source);
