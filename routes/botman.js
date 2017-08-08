@@ -54,10 +54,12 @@ bot.on('message', (event) => {
     if(event.message.type !== 'text'){
         return;
     }
+    const lineProfile;
     if(event.source.type !== 'user'){
-        const lineProfile = getGruopMemberProfile(event.source);
+        lineProfile = getGruopMemberProfile(event.source);
+
     }else{
-        const lineProfile = event.source.profile();
+        lineProfile = event.source.profile();
     }
     if(event.message.text.indexOf('ほめて') !== -1){
             console.log(lineProfile);
