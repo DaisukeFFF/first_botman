@@ -58,8 +58,6 @@ var getRandom = (min, max) => {
 }
 
 router.post('/', parser, (req, res, next) => {
-    console.log(req.body);
-    console.log(parser);
     if (req.body.events === '') {
         return;
     }
@@ -83,7 +81,7 @@ bot.on('unfollow', (event) => {
 });
 
 bot.on('message', (event) => {
-    console.log(event);
+    //console.log(event);
     if(event.message.type !== 'text'){
         return;
     }
