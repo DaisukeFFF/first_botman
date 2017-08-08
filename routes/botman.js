@@ -14,13 +14,18 @@ const parser = bodyParser.json({
     }
 });
 
+const setDisplayName = (source) => {
+    if(source.type === 'user'){
+        return source.profile();
+    }else{
+        return getGruopMemberProfile(source);
+    }
+}
+
 const returnMessage = (event) =>{
     if(event.message.text.indexOf('ほめて') !== -1){
-            let displayName;
-            if(event.source.type === 'user'){
-                //displayName = 
-            }
-            console.log(lineProfile);
+            
+            console.log(setDisplayName(event.source));
             const num = getRandom(1,3);
             switch (num){ 
             case 1:
@@ -82,13 +87,7 @@ bot.on('message', (event) => {
     if(event.message.type !== 'text'){
         return;
     }
-    if(event.source.type !== 'user'){
-        lineProfile = getGruopMemberProfile(event.source);
-        //returnMessage(lineProfile);
-    }else{
-        lineProfile = event.source.profile();
-    }
-    
+    returnMessage(event);
 });
 
 // router.post('/', function(req, res) {
