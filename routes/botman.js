@@ -9,7 +9,6 @@ const router = express.Router();
 
 const parser = bodyParser.json({
     verify: (req, res, buf, encoding) => {
-        console.log('aaa');
         req.rawBody = buf.toString(encoding);
     }
 });
@@ -26,8 +25,8 @@ const setDisplayName = (source) => new Promise( (resolve, reject) => {
 
 const returnMessage = (event) =>{
     if(event.message.text.indexOf('ほめて') !== -1){
-            console.log('1:'+ event.source);
-            console.log(setDisplayName(event.source));
+            //console.log(event.source);
+            setDisplayName(event.source);
             const num = getRandom(1,3);
             switch (num){ 
             case 1:
