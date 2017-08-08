@@ -14,16 +14,18 @@ const parser = bodyParser.json({
 });
 
 const setDisplayName = (source) => {
+    console.log(source);
     if(source.type === 'user'){
         return source.profile().then((lineProfile) => {
             console.log(lineProfile);
+            console.log('ssssss');
             return lineProfile;
         });
     }else{
-        return getGruopMemberProfile(source).then((lineProfile) =>{
-            console.log(lineProfile);
-            return lineProfile;
-        });
+        //return getGruopMemberProfile(source).then((lineProfile) =>{
+          //  console.log(lineProfile);
+            //return lineProfile;
+        };
     }
 };
 
