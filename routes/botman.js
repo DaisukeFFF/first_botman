@@ -45,6 +45,8 @@ const returnMessage = (event) =>{
                              '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
         }else if(event.message.text === 'くっころ'){
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
+        }else if(event.message.text === '宜保'){
+            event.reply('@宜保 吉弥');
         }
     });
 }
