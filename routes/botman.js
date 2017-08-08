@@ -48,7 +48,7 @@ const returnMessage = (event) =>{
 
 const getGruopMemberProfile = (source) => {
     return bot.get('/group/'+source.groupId +'/member/'+ source.userId).then((res)  =>{
-        console.log(res);
+        //console.log(res);
         return res.json();
     });
 }
