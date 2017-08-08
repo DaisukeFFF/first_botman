@@ -22,10 +22,10 @@ const setDisplayName = (source) => {
             return lineProfile;
         });
     }else{
-        //return getGruopMemberProfile(source).then((lineProfile) =>{
-          //  console.log(lineProfile);
-            //return lineProfile;
-        //};
+        return getGruopMemberProfile(source).then((lineProfile) =>{
+            console.log(lineProfile);
+            return lineProfile;
+        });
     }
 };
 
