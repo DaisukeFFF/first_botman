@@ -20,15 +20,17 @@ const setDisplayName = (source) => {
             return lineProfile;
         });
     }else{
-        console.log(getGruopMemberProfile(source));
-        return;
+        return getGruopMemberProfile(source).then((lineProfile) =>{
+            console.log(lineProfile);
+            return lineProfile;
+        });
     }
 };
 
 const returnMessage = (event) =>{
     if(event.message.text.indexOf('ほめて') !== -1){
             //console.log(event.source);
-            console.log(setDisplayName(event.source));
+            //console.log(setDisplayName(event.source));
             const num = getRandom(1,3);
             switch (num){ 
             case 1:
