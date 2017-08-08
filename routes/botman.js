@@ -14,18 +14,19 @@ const parser = bodyParser.json({
     }
 });
 
-const setDisplayName = (source) => {
+const setDisplayName = (source) => new Promise( (resolve, reject) => {
     if(source.type === 'user'){
         console.log(source.profile());
         return source.profile();
     }else{
-        return getGruopMemberProfile(source);
+        console.log(getGruopMemberProfile(source));
+        return;
     }
-}
+});
 
 const returnMessage = (event) =>{
     if(event.message.text.indexOf('ほめて') !== -1){
-            
+            console.log('1:'+ event.source);
             console.log(setDisplayName(event.source));
             const num = getRandom(1,3);
             switch (num){ 
