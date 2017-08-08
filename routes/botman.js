@@ -16,7 +16,7 @@ const parser = bodyParser.json({
 const setDisplayName = (source) => {
     if(source.type === 'user'){
         return source.profile().then((lineProfile) => {
-            console.log(lineProfile);
+            //console.log(lineProfile);
             return lineProfile;
         });
     }else{
@@ -30,7 +30,7 @@ const setDisplayName = (source) => {
 const returnMessage = (event) =>{
     if(event.message.text.indexOf('ほめて') !== -1){
             //console.log(event.source);
-            //console.log(setDisplayName(event.source));
+            console.log(setDisplayName(event.source));
             const num = getRandom(1,3);
             switch (num){ 
             case 1:
