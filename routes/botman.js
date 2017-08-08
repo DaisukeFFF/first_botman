@@ -82,7 +82,6 @@ bot.on('message', (event) => {
     if(event.message.type !== 'text'){
         return;
     }
-    const lineProfile;
     if(event.source.type !== 'user'){
         lineProfile = getGruopMemberProfile(event.source);
         //returnMessage(lineProfile);
