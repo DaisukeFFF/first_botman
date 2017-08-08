@@ -16,6 +16,7 @@ const parser = bodyParser.json({
 
 const setDisplayName = (source) => {
     if(source.type === 'user'){
+        console.log(source.profile());
         return source.profile();
     }else{
         return getGruopMemberProfile(source);
