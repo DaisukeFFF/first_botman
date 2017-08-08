@@ -31,17 +31,17 @@ const returnMessage = (event) =>{
             case 1:
                 event.reply('素晴らしい！君は日本の宝だ！');
             case 2:
-                event.reply(lineProfile.displayName + 'さん！\nさすがっすね！');
+                //event.reply(lineProfile.displayName + 'さん！\nさすがっすね！');
             case 3:
                 event.reply('よっ！若頭！');
             case 4:
-                event.reply(lineProfile.displayName +'さん\n今日もお疲れ様！夜はゆっくり休んでくださいね');
+                //event.reply(lineProfile.displayName +'さん\n今日もお疲れ様！夜はゆっくり休んでくださいね');
             }
     }else if(event.message.text === 'ヘルプ'){
         event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
                          '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
     }else if(event.message.text === 'くっころ'){
-        event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
+        //event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
     }
 }
 
