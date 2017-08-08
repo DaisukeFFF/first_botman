@@ -9,12 +9,40 @@ const router = express.Router();
 
 const parser = bodyParser.json({
     verify: (req, res, buf, encoding) => {
+        console.log('aaa');
         req.rawBody = buf.toString(encoding);
     }
 });
 
+const returnMessage = (event) =>{
+    if(event.message.text.indexOf('ほめて') !== -1){
+            let displayName;
+            if(event.source.type === 'user'){
+                displayName = 
+            }
+            console.log(lineProfile);
+            const num = getRandom(1,3);
+            switch (num){ 
+            case 1:
+                event.reply('素晴らしい！君は日本の宝だ！');
+            case 2:
+                event.reply(lineProfile.displayName + 'さん！\nさすがっすね！');
+            case 3:
+                event.reply('よっ！若頭！');
+            case 4:
+                event.reply(lineProfile.displayName +'さん\n今日もお疲れ様！夜はゆっくり休んでくださいね');
+            }
+    }else if(event.message.text === 'ヘルプ'){
+        event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
+                         '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
+    }else if(event.message.text === 'くっころ'){
+        event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
+    }
+}
+
 const getGruopMemberProfile = (source) => {
-    return bot.get('/group/'+source.groupId +'/member/'+ source.userId).then(function (res) {
+    return bot.get('/group/'+source.groupId +'/member/'+ source.userId).then((res)  =>{
+        console.log(res);
         return res.json();
     });
 }
@@ -57,28 +85,9 @@ bot.on('message', (event) => {
     const lineProfile;
     if(event.source.type !== 'user'){
         lineProfile = getGruopMemberProfile(event.source);
-
+        //returnMessage(lineProfile);
     }else{
         lineProfile = event.source.profile();
-    }
-    if(event.message.text.indexOf('ほめて') !== -1){
-            console.log(lineProfile);
-            const num = getRandom(1,3);
-            switch (num){ 
-            case 1:
-                event.reply('素晴らしい！君は日本の宝だ！');
-            case 2:
-                event.reply(lineProfile.displayName + 'さん！\nさすがっすね！');
-            case 3:
-                event.reply('よっ！若頭！');
-            case 4:
-                event.reply(lineProfile.displayName +'さん\n今日もお疲れ様！夜はゆっくり休んでくださいね');
-            }
-    }else if(event.message.text === 'ヘルプ'){
-        event.reply('お呼びですか?\n「ほめて」と言われたら褒めます。\n'+
-                         '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
-    }else if(event.message.text === 'くっころ'){
-        event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
     }
     
 });
