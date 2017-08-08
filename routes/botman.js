@@ -18,7 +18,7 @@ const returnMessage = (event) =>{
     if(event.message.text.indexOf('ほめて') !== -1){
             let displayName;
             if(event.source.type === 'user'){
-                displayName = 
+                //displayName = 
             }
             console.log(lineProfile);
             const num = getRandom(1,3);
