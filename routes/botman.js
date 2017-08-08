@@ -25,7 +25,7 @@ const setDisplayName = (source) => {
         //return getGruopMemberProfile(source).then((lineProfile) =>{
           //  console.log(lineProfile);
             //return lineProfile;
-        };
+        //};
     }
 };
 
