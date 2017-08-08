@@ -27,7 +27,7 @@ const setlineProfile = (source) => {
 
 const returnMessage = (event) =>{
     setlineProfile(event.source).then( (lineProfile) =>{
-        //console.log(lineProfile);
+        console.log(lineProfile);
         if(event.message.text.indexOf('ほめて') !== -1){
                 const num = getRandom(1,3);
                 switch (num){ 
@@ -76,6 +76,7 @@ router.post('/', parser, (req, res, next) => {
 
 // 友達追加
 bot.on('follow', (event) => {
+    console.log(event);
     console.log('follow success!');
 });
 
