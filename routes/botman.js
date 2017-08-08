@@ -76,7 +76,6 @@ router.post('/', parser, (req, res, next) => {
 
 // 友達追加
 bot.on('follow', (event) => {
-    console.log(event);
     console.log('follow success!');
 });
 
@@ -86,6 +85,7 @@ bot.on('unfollow', (event) => {
 });
 
 bot.on('message', (event) => {
+    console.log(event);
     if(event.message.type !== 'text'){
         return;
     }
