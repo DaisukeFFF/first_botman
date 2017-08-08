@@ -12,8 +12,8 @@ const parser = bodyParser.json({
         req.rawBody = buf.toString(encoding);
     }
 });
-
-const setDisplayName = (source) => new Promise( (resolve, reject) => {
+//new Promise( (resolve, reject) => 
+const setDisplayName = (source) => {
     if(source.type === 'user'){
         console.log(source.profile());
         return source.profile();
@@ -21,7 +21,7 @@ const setDisplayName = (source) => new Promise( (resolve, reject) => {
         console.log(getGruopMemberProfile(source));
         return;
     }
-});
+};
 
 const returnMessage = (event) =>{
     if(event.message.text.indexOf('ほめて') !== -1){
