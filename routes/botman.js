@@ -5,7 +5,6 @@ var crypto = require("crypto");
 const async = require('async');
 const http = require('http');
 const bot = require('../lib/lineBot');
-const openWeather = require('../lib/openWeatherMap');
 const router = express.Router();
 
 
@@ -16,10 +15,11 @@ const parser = bodyParser.json({
 });
 
 const weatherData = () => {
-    const location = "Fukuoka-shi,jp";
+    const location = "Tokyo,jp";
     const units = 'metric';
     const APIKEY = process.env.OPEN_WEATHER_KEY;
-    const URL = 'http://api.openweathermap.org/data/2.5/weather?q='+ location +'&units='+ units +'&appid='+ APIKEY;
+    const URL = 'http://api.openweathermap.org/data/2.5/weather?q='
+        + location +'&units='+ units +'&appid='+ APIKEY;
 
     http.get(URL, (res) => {
         let body = '';
@@ -30,6 +30,7 @@ const weatherData = () => {
         res.on('data', (chunk) => {
             res = JSON.parse(body);
             console.log(res);
+            return res;
         });
     });
 };
@@ -68,6 +69,10 @@ const returnMessage = (event) =>{
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
         }else if(event.message.text === 'FUJII'){
             event.reply('@FUJII DAISUKE ');
+        }else if(event.message.text === '天気'){
+            const tokyoWeather= weatherData();
+            event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather.main+
+                '\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
         }
     });
 }
