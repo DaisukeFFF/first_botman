@@ -71,8 +71,8 @@ const returnMessage = (event) =>{
             event.reply('@FUJII DAISUKE ');
         }else if(event.message.text === '天気'){
             const tokyoWeather= weatherData();
-            event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather.main+
-                '\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
+            event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main);
+                //'\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
         }
     });
 }
