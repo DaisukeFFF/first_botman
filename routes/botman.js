@@ -99,7 +99,7 @@ router.post('/', parser, (req, res, next) => {
 
 // 友達追加
 bot.on('follow', (event) => {
-    openWeather.getWeatherData;
+    weatherData();
     console.log('follow success!');
 });
 
