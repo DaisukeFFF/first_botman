@@ -3,7 +3,9 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var crypto = require("crypto");
 const async = require('async');
+const http = require('http');
 const bot = require('../lib/lineBot');
+const openWeather = require('../lib/openWeatherMap');
 const router = express.Router();
 
 
@@ -12,6 +14,25 @@ const parser = bodyParser.json({
         req.rawBody = buf.toString(encoding);
     }
 });
+
+const weatherData = () => {
+    const location = "Fukuoka-shi,jp";
+    const units = 'metric';
+    const APIKEY = process.env.OPEN_WEATHER_KEY;
+    const URL = 'http://api.openweathermap.org/data/2.5/weather?q='+ location +'&units='+ units +'&appid='+ APIKEY;
+
+    http.get(URL, (res) => {
+        let body = '';
+        res.setEncoding('utf8');
+        res.on('data', (chunk) => {
+            body += chunk;
+        });
+        res.on('data', (chunk) => {
+            res = JSON.parse(body);
+            console.log(res);
+        });
+    });
+};
 
 const setlineProfile = (source) => {
     if(source.type === 'user'){
@@ -45,8 +66,6 @@ const returnMessage = (event) =>{
                              '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
         }else if(event.message.text === 'くっころ'){
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
-        }else if(event.message.text === '宜保'){
-            event.reply('@宜保 吉弥 ');
         }else if(event.message.text === 'FUJII'){
             event.reply('@FUJII DAISUKE ');
         }
@@ -80,6 +99,7 @@ router.post('/', parser, (req, res, next) => {
 
 // 友達追加
 bot.on('follow', (event) => {
+    openWeather.getWeatherData;
     console.log('follow success!');
 });
 
