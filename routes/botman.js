@@ -71,7 +71,8 @@ const returnMessage = (event) =>{
                 console.log(tokyoWeather.weather[0]);
                 console.log(tokyoWeather.main);
                 event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
-                    '気温：'+ tokyoWeather.weather[0].main.temp);
+                    '\n気温：'+ tokyoWeather.main.temp+
+                    '\n'+ tokyoWeather.weather[0].icon);
                 //'\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
             });
         }
@@ -115,7 +116,6 @@ bot.on('unfollow', (event) => {
 });
 
 bot.on('message', (event) => {
-    console.log(event);
     if(event.message.type !== 'text'){
         return;
     }
