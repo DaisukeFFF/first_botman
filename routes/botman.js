@@ -28,10 +28,9 @@ const weatherData = () => {
             body += chunk;
         });
         res.on('data', (chunk) => {
-            JSON.parse(body).then((res) =>{
+            res = JSON.parse(body)
                 console.log(res);
                 return res;
-            });
         });
     });
 };
