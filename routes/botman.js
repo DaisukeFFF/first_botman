@@ -22,10 +22,10 @@ const weatherData = () => {
         + location +'&units='+ units +'&appid='+ APIKEY;
 
     http.get(URL, (res) => {
+        console.log(res.json());
         let body = '';
         res.setEncoding('utf8');
         res.on('data', (chunk) => {
-            console.log(chunk);
             body += chunk;
         });
         res.on('data', (chunk) => {
@@ -68,8 +68,6 @@ const returnMessage = (event) =>{
                              '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
         }else if(event.message.text === 'くっころ'){
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
-        }else if(event.message.text === 'FUJII'){
-            event.reply('@FUJII DAISUKE ');
         }else if(event.message.text === '天気'){
             const tokyoWeather= weatherData();
             console.log('test');
