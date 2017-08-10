@@ -22,15 +22,14 @@ const weatherData = () => {
         + location +'&units='+ units +'&appid='+ APIKEY;
 
     http.get(URL, (res) => {
-        console.log(res);
         let body = '';
         res.setEncoding('utf8');
         res.on('data', (chunk) => {
+            console.log(chunk);
             body += chunk;
         });
         res.on('data', (chunk) => {
             res = JSON.parse(body)
-                console.log(body);
                 console.log(res);
                 return res;
         });
