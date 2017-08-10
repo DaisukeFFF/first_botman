@@ -14,13 +14,13 @@ const parser = bodyParser.json({
     }
 });
 
-const weatherData = () => {
+const weatherData = () => new Promise((resolve, reject) =>  {
+
     const location = "Tokyo,jp";
     const units = 'metric';
     const APIKEY = process.env.OPEN_WEATHER_KEY;
     const URL = 'http://api.openweathermap.org/data/2.5/weather?q='
         + location +'&units='+ units +'&appid='+ APIKEY;
-
     http.get(URL, (res) => {
         let body = '';
         res.setEncoding('utf8');
@@ -28,12 +28,11 @@ const weatherData = () => {
             body += chunk;
         });
         res.on('data', (chunk) => {
-            return JSON.parse(body);
-                //console.log(res);
-                //return res.json();
+            tokyoWeather = JSON.parse(body);
+            resolve(tokyoWeather);
         });
     });
-};
+});
 
 const setlineProfile = (source) => {
     if(source.type === 'user'){
@@ -71,11 +70,11 @@ const returnMessage = (event) =>{
             weatherData().then((tokyoWeather) => {
                 console.log('test');
                 console.log(tokyoWeather);
-            console.log(tokyoWeather.weather);
-            console.log(tokyoWeather.weather[0].main);
-            console.log(tokyoWeather.weather[0]);
-            console.log(tokyoWeather.main);
-            event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main);
+                console.log(tokyoWeather.weather);
+                console.log(tokyoWeather.weather[0].main);
+                console.log(tokyoWeather.weather[0]);
+                console.log(tokyoWeather.main);
+                event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main);
                 //'\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
             });
         }
