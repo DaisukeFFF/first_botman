@@ -68,13 +68,10 @@ const returnMessage = (event) =>{
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
         }else if(event.message.text === '天気'){
             weatherData().then((tokyoWeather) => {
-                console.log('test');
-                console.log(tokyoWeather);
-                console.log(tokyoWeather.weather);
-                console.log(tokyoWeather.weather[0].main);
                 console.log(tokyoWeather.weather[0]);
                 console.log(tokyoWeather.main);
-                event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main);
+                event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
+                    '気温：'+ tokyoWeather.weather[0].main.temp);
                 //'\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
             });
         }
