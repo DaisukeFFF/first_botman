@@ -1,7 +1,7 @@
 {
   "weather": {
     "Rain": "雨",
-    "Cloud" "曇り"
+    "Cloud" : "曇り"
   },
   "mongodb": {
     "port": 3000,
