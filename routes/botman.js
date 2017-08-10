@@ -28,9 +28,10 @@ const weatherData = () => {
             body += chunk;
         });
         res.on('data', (chunk) => {
-            res = JSON.parse(body);
-            console.log(res);
-            return res;
+            JSON.parse(body).then((res) =>{
+                console.log(res);
+                return res;
+            });
         });
     });
 };
@@ -71,6 +72,7 @@ const returnMessage = (event) =>{
             event.reply('@FUJII DAISUKE ');
         }else if(event.message.text === '天気'){
             const tokyoWeather= weatherData();
+            console.log('test');
             console.log(tokyoWeather.weather);
             console.log(tokyoWeather.weather[0].main);
             console.log(tokyoWeather.weather[0]);
