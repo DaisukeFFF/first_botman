@@ -22,16 +22,15 @@ const weatherData = () => {
         + location +'&units='+ units +'&appid='+ APIKEY;
 
     http.get(URL, (res) => {
-        console.log(res.json());
         let body = '';
         res.setEncoding('utf8');
         res.on('data', (chunk) => {
             body += chunk;
         });
         res.on('data', (chunk) => {
-            res = JSON.parse(body)
-                console.log(res);
-                return res;
+            return JSON.parse(body);
+                //console.log(res);
+                //return res.json();
         });
     });
 };
@@ -69,14 +68,16 @@ const returnMessage = (event) =>{
         }else if(event.message.text === 'くっころ'){
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
         }else if(event.message.text === '天気'){
-            const tokyoWeather= weatherData();
-            console.log('test');
+            weatherData().then((tokyoWeather) => {
+                console.log('test');
+                console.log(tokyoWeather);
             console.log(tokyoWeather.weather);
             console.log(tokyoWeather.weather[0].main);
             console.log(tokyoWeather.weather[0]);
             console.log(tokyoWeather.main);
             event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main);
                 //'\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
+            });
         }
     });
 }
