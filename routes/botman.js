@@ -71,8 +71,8 @@ const returnMessage = (event) =>{
                 console.log(tokyoWeather.weather[0]);
                 console.log(tokyoWeather.main);
                 event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
-                    '\n気温：'+ tokyoWeather.main.temp+
-                    '\n'+ tokyoWeather.weather[0].icon);
+                    '\n気温：'+ tokyoWeather.main.temp+ '℃'
+                    +'\n' + config.weather.Rain);
                 //'\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
             });
         }
