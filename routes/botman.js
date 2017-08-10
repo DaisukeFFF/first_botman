@@ -74,7 +74,6 @@ const returnMessage = (event) =>{
                 event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
                     '\n気温：'+ tokyoWeather.main.temp+ '℃'
                     );
-                //'\n気温：'+tokyoWeather.temp +'\nです。今日も一日頑張りましょう！');
             });
         }
     });
@@ -104,6 +103,17 @@ router.post('/', parser, (req, res, next) => {
     res.set('Content-Type', 'text/plain');
     res.status(200).end();
 });
+
+router.get('/cron', (req,res) => {
+            weatherData().then((tokyoWeather) => {
+                console.log(tokyoWeather.weather[0]);
+                console.log(tokyoWeather.main);
+                bot.push('U3cec006ed81ed2abbf10ff808ef31f13' ,'本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
+                    '\n気温：'+ tokyoWeather.main.temp+ '℃');
+            });
+});
+
+
 
 // 友達追加
 bot.on('follow', (event) => {
