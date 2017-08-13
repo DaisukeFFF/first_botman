@@ -40,8 +40,12 @@ const setlineProfile = (source) => {
         return source.profile().then((lineProfile) => {
             return lineProfile;
         });
-    }else{
+    }else if(source.type === 'group'){
         return getGruopMemberProfile(source).then((lineProfile) =>{
+            return lineProfile;
+        });
+    }else {
+        return getRoomMemberProfile(source).then((lineProfile) =>{
             return lineProfile;
         });
     }
@@ -71,8 +75,11 @@ const returnMessage = (event) =>{
             weatherData().then((tokyoWeather) => {
                 console.log(tokyoWeather.weather[0]);
                 console.log(tokyoWeather.main);
+                let a = tokyoWeather.weather[0].main;
                 event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
                     '\n気温：'+ tokyoWeather.main.temp+ '℃'
+                    + config.weather.Rain
+                    + config.weather.a
                     );
             });
         }
@@ -84,6 +91,13 @@ const getGruopMemberProfile = (source) => {
         return res.json();
     });
 }
+
+const getRoomMemberProfile = (source) => {
+    return bot.get('/room/'+source.roomId +'/member/'+ source.userId).then((res)  =>{
+        return res.json();
+    });
+}
+
 
 //minからmaxまでの乱数を返す関数
 var getRandom = (min, max) => {
