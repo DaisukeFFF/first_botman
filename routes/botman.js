@@ -71,6 +71,14 @@ const returnMessage = (event) =>{
                              '今はただの褒め上手ですが、そのうち色々覚えていきますよ！');
         }else if(event.message.text === 'くっころ'){
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
+        }else if(event.message.text.indexOf('疲れた') !== -1 || event.message.text.indexOf('つかれた') !== -1){
+            const googlePhotoUrl = 'https://goo.gl/photos/tbvKmWDzKJ6kELBi6';
+            message = {
+                type: 'image',
+                originalContentUrl: googlePhotoUrl,
+                previewImageUrl: googlePhotoUrl
+            }
+            event.reply(message);
         }else if(event.message.text === '天気'){
             weatherData().then((tokyoWeather) => {
                 console.log(tokyoWeather.weather[0]);
