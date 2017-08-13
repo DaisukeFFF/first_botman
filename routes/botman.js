@@ -36,7 +36,7 @@ const weatherData = () => new Promise((resolve, reject) =>  {
 });
 
 const getJapanWeather = (text) =>{
-    return config.weather.text;
+    return text;
 }
 
 const setlineProfile = (source) => {
@@ -85,7 +85,7 @@ const returnMessage = (event) =>{
             event.reply(message);
         }else if(event.message.text === '天気'){
             weatherData().then((tokyoWeather) => {
-                let a = getJapanWeather(tokyoWeather.weather[0].main);
+                let a = getJapanWeather('config.weather.' +tokyoWeather.weather[0].main);
                 console.log(a);
                 console.log(tokyoWeather.weather[0]);
                 console.log(tokyoWeather.main);
