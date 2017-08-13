@@ -87,7 +87,7 @@ const returnMessage = (event) =>{
                 event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
                     '\n気温：'+ tokyoWeather.main.temp+ '℃');
             });
-        }else if(event.type.text === 'お天気'){
+        }else if(event.message.text === 'お天気'){
             message = {
                 "type": "template",
                 "altText": "this is a buttons template",
