@@ -97,8 +97,8 @@ const returnMessage = (event) =>{
                     "title": "Weather",
                     "text": "現在の天気"
                 }
+            };
             event.reply(message);
-            }
         }
     });
 }
