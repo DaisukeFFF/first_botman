@@ -95,7 +95,12 @@ const returnMessage = (event) =>{
                     "type": "buttons",
                     "thumbnailImageUrl": "http://openweathermap.org/img/w/10d.png",
                     "title": "Weather",
-                    "text": "現在の天気"
+                    "text": "現在の天気",
+                    "action": {
+                        "type":"message",
+                        "label": "OK",
+                        "text": "OK!"
+                    }
                 }
             };
             event.reply(message);
