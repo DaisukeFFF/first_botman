@@ -100,6 +100,11 @@ const returnMessage = (event) =>{
                         type:'message',
                         label: 'OK',
                         text: 'OK!'
+                    },
+                    {
+                        type:'message',
+                        label: 'NO',
+                        text: 'NO!'
                     }]
                 }
             };
