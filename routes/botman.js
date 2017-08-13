@@ -84,8 +84,15 @@ const returnMessage = (event) =>{
             event.reply(message);
         }else if(event.message.text === '天気'){
             weatherData().then((tokyoWeather) => {
-                event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
-                    '\n気温：'+ tokyoWeather.main.temp+ '℃');
+            message = {
+                type: 'image',
+                originalContentUrl: 'http://openweathermap.org/img/w/'+tokyoWeather.weather[0].icon +'.png',
+                previewImageUrl: 'http://openweathermap.org/img/w/'+tokyoWeather.weather[0].icon +'.png'
+            }
+                event.reply(['本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
+                    '\n気温：'+ tokyoWeather.main.temp+ '℃',
+                    message
+                    ]);
             });
         }else if(event.message.text === 'お天気'){
             message = {
