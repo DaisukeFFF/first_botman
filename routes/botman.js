@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-var crypto = require("crypto");
+var crypto = require('crypto');
 const async = require('async');
 const http = require('http');
 const config = require('config');
@@ -17,7 +17,7 @@ const parser = bodyParser.json({
 
 const weatherData = () => new Promise((resolve, reject) =>  {
 
-    const location = "Tokyo,jp";
+    const location = 'Tokyo,jp';
     const units = 'metric';
     const APIKEY = process.env.OPEN_WEATHER_KEY;
     const URL = 'http://api.openweathermap.org/data/2.5/weather?q='
@@ -89,17 +89,17 @@ const returnMessage = (event) =>{
             });
         }else if(event.message.text === 'お天気'){
             message = {
-                "type": "template",
-                "altText": "this is a buttons template",
-                "template": {
-                    "type": "buttons",
-                    "thumbnailImageUrl": "http://openweathermap.org/img/w/10d.png",
-                    "title": "Weather",
-                    "text": "現在の天気",
-                    "actions": [{
-                        "type":"message",
-                        "label": "OK",
-                        "text": "OK!"
+                type: 'template',
+                altText: 'this is a buttons template',
+                template: {
+                    type: 'buttons',
+                    thumbnailImageUrl: 'http://openweathermap.org/img/w/10d.png',
+                    title: 'Weather',
+                    text: '現在の天気',
+                    actions: [{
+                        type:'message',
+                        label: 'OK',
+                        text: 'OK!'
                     }]
                 }
             };
