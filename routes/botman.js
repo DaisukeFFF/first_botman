@@ -72,7 +72,7 @@ const returnMessage = (event) =>{
         }else if(event.message.text === 'くっころ'){
             event.reply(lineProfile.displayName + 'にこんな辱めを受けるとは...！\nくっ...殺せ！');
         }else if(event.message.text.indexOf('疲れた') !== -1 || event.message.text.indexOf('つかれた') !== -1){
-            const googlePhotoUrl = 'https://goo.gl/photos/tbvKmWDzKJ6kELBi6';
+            const googlePhotoUrl = 'https://lh3.googleusercontent.com/Zylsh2x6bogkgoYiZVBJxIqHOrHG6V7rLCT_DN_h7Pr-VYk5PUelT48BBvucgixVe_eKlBW1uTT1O5m0BBBEwGf6y3FxhNzVtsZmzFUbmnGy5asMsGxB7a-H_55AZt1i0iet-yLU5mW4nZBBKviqyWhDIS94O2wCGndR9jN0Ax6h5VDtw3x15lpbrVOysfYa_DxD4KCgUA1HxvsjXsxQkcoRZd-Sr_tn7QQP87emKjg5c5OU2ZuqAxptfA0umLaHKo7GzYmBdFr9DEF4xD7BJk9vr3Fb3jQM7QZZ9w8SvOTyJA8J5RQ9yvPxF007d-FkiXugFGx8RUH12nuurkk_Z6FUyg7dKlBUIEQ1Jao5iQak9nFzGWHOpaNzU7busH0RAU97w8Idzahnel4k-Q4KhCp-1KuigjELccLiU7c2UIXZqpPYKeqPNDFTiHo0Vs_nkOAdF3GsT3ieY_u1GDE_jp4CvkjgG-a0tgghXgXpZypwTHIz-GHMAui7JO4E9AiqBHm7X5iksWhszyUYaRA27Bj-N_1NiilWELIXH6NKrwnqQI03k8KqfDXayYDjy-2s2x0HRWYo9_q1x9dxDiQC56uHPSl0Dxm8Od6H_tmJBGzO6XvpYhsVub9l0M6RsBPpdcEMsMCxRAkXEHe5YhXcYhwUmI2jB7kmiHbVQKbtmukYSg=w600-h596-no';
             message = {
                 type: 'image',
                 originalContentUrl: googlePhotoUrl,
