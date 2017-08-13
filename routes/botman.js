@@ -57,7 +57,6 @@ const setlineProfile = (source) => {
 
 const returnMessage = (event) =>{
     setlineProfile(event.source).then( (lineProfile) =>{
-        console.log(lineProfile);
         if(event.message.text.indexOf('ほめて') !== -1){
                 const num = getRandom(1,3);
                 switch (num){ 
@@ -85,13 +84,20 @@ const returnMessage = (event) =>{
             event.reply(message);
         }else if(event.message.text === '天気'){
             weatherData().then((tokyoWeather) => {
-                let a = getJapanWeather('config.weather.' +tokyoWeather.weather[0].main);
-                console.log(a);
-                console.log(tokyoWeather.weather[0]);
-                console.log(tokyoWeather.main);
                 event.reply('本日の天気(東京)\n'+ '天候：'+ tokyoWeather.weather[0].main+ 
                     '\n気温：'+ tokyoWeather.main.temp+ '℃');
             });
+        }else if(event.type.text === 'お天気'){
+            message = {
+                "type": "template",
+                "altText": "this is a buttons template",
+                "template": {
+                    "type": "buttons",
+                    "thumbnailImageUrl": "http://openweathermap.org/img/w/10d.png",
+                    "title": "Weather",
+                    "text": "現在の天気"
+                }
+            }
         }
     });
 }
