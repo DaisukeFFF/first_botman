@@ -117,8 +117,8 @@ const returnMessage = (event) =>{
                         template: {
                             type: "buttons",
                             thumbnailImageUrl: "https://openweathermap.org/img/w/10d.png",
-                            title: "Menu",
-                            text: "Please select",
+                            title: "現在の天気",
+                            text: "天候:" + tokyoWeather.weather[0].main,
                             actions: [
                                 {
                                   type: "postback",
@@ -191,11 +191,10 @@ const returnMessage = (event) =>{
                                 }
                             ]
                             }
-            }
-        });
-        }
+                }
+              });
             event.reply(message);
-        }
+        }}
     });
 }
 
