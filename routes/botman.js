@@ -120,7 +120,7 @@ const returnMessage = (event) =>{
                         altText: "this is a buttons template",
                         template: {
                             type: "buttons",
-                            thumbnailImageUrl: "https://openweathermap.org/img/w/' + tokyoWeather.weather[0].icon + '.png",
+                            thumbnailImageUrl: "https://openweathermap.org/img/w/" + tokyoWeather.weather[0].icon + ".png",
                             title: "現在の天気(東京)",
                             text: "天候:" + tokyoWeather.weather[0].main + '気温：'+ tokyoWeather.main.temp+ '℃',
                             actions: [
