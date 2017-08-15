@@ -6,6 +6,8 @@ const async = require('async');
 const http = require('http');
 const config = require('config');
 const bot = require('../lib/lineBot');
+var FeedParser = require('feedparser');
+var feed = 'view-source:http://rss.exblog.jp/rss/exblog/goodblog/index.xml';
 const router = express.Router();
 
 const parser = bodyParser.json({
@@ -121,11 +123,11 @@ const returnMessage = (event) =>{
                             title: "現在の天気",
                             text: "天候:" + tokyoWeather.weather[0].main,
                             actions: [
-                                // {
-                                //   type: "message",
-                                //   label: "OK"
-                                //   text: "OK!"
-                                // }
+                                {
+                                  type: "message",
+                                  label: "OK"
+                                  text: "OK!"
+                                }
                             ]
                         }
             }
@@ -211,6 +213,26 @@ router.get('/cron', (req,res) => {
             });
 });
 
+router.get('/feed', (req, res) =>{
+    var req = request(feed);
+    var feedparser = new FeedParser({});
+ 
+    var items = [];
+    var pubdate = "";
+ 
+    req.on('response', function (res) {
+      this.pipe(feedparser);
+    });
+ 
+    feedparser.on('meta', function(meta) {
+      console.log('==== %s ====', meta.title);
+    });
+ 
+    feedparser.on('readable', function() {
+    console.log("item.pubdate: " + item.pubdate + '   ' + item.title);
+        
+    });
+});
 
 
 // 友達追加
