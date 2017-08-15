@@ -121,9 +121,9 @@ const returnMessage = (event) =>{
                         altText: "this is a buttons template",
                         template: {
                             type: "buttons",
-                            thumbnailImageUrl: "https://openweathermap.org/img/w/10d.png",
-                            title: "現在の天気",
-                            text: "天候:" + tokyoWeather.weather[0].main,
+                            thumbnailImageUrl: "https://openweathermap.org/img/w/' + tokyoWeather.weather[0].icon + '.png",
+                            title: "現在の天気(東京)",
+                            text: "天候:" + tokyoWeather.weather[0].main + '気温：'+ tokyoWeather.main.temp+ '℃',
                             actions: [
                                 {
                                   type: "message",
@@ -215,26 +215,26 @@ router.get('/cron', (req,res) => {
             });
 });
 
-router.get('/feed', (req, res) =>{
-    var req = feedreq;
-    var feedparser = new FeedParser({});
+// router.get('/feed', (req, res) =>{
+//     var req = feedreq;
+//     var feedparser = new FeedParser({});
  
-    var items = [];
-    var pubdate = "";
+//     var items = [];
+//     var pubdate = "";
  
-    req.on('response', function (res) {
-      this.pipe(feedparser);
-    });
+//     req.on('response', function (res) {
+//       this.pipe(feedparser);
+//     });
  
-    feedparser.on('meta', function(meta) {
-      console.log('==== %s ====', meta.title);
-    });
+//     feedparser.on('meta', function(meta) {
+//       console.log('==== %s ====', meta.title);
+//     });
  
-    feedparser.on('readable', function() {
-    console.log("item.pubdate: " + item.pubdate + '   ' + item.title);
+//     feedparser.on('readable', function() {
+//     console.log("item.pubdate: " + item.pubdate + '   ' + item.title);
         
-    });
-});
+//     });
+// });
 
 
 // 友達追加
