@@ -111,6 +111,7 @@ const returnMessage = (event) =>{
             }
             event.reply(message);
         }else if(event.message.text === 'お天気'){
+        weatherData().then((tokyoWeather) => {
             message = {
                         type: "template",
                         altText: "this is a buttons template",
@@ -137,8 +138,10 @@ const returnMessage = (event) =>{
                                 }
                             ]
                         }
+            }
+            event.reply(message);
+        });
         }else if(event.message.text === 'カルーセル'){
-            weatherData().then((tokyoWeather) => {
                 message = {
                         type: "template",
                         altText: "this is a carousel template",
@@ -188,11 +191,10 @@ const returnMessage = (event) =>{
                                       uri: "http://example.com/page/222"
                                   }
                                 ]
-                                }
-                            ]
                             }
-                }
-              });
+                        ]
+                        }
+                    }
             event.reply(message);
         }}
     });
