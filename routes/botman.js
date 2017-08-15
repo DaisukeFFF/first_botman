@@ -88,7 +88,7 @@ const returnMessage = (event) =>{
                     '\n気温：'+ tokyoWeather.main.temp+ '℃',
                     ]);
             });
-        }else if(event.message.text === 'お天気'){
+        }else if(event.message.text === '君大丈夫？'){
             message = {
                         type: "template",
                         altText: "this is a confirm template",
@@ -110,7 +110,7 @@ const returnMessage = (event) =>{
                         }
             }
             event.reply(message);
-        }else if(event.message.text === 'ボタン'){
+        }else if(event.message.text === 'お天気'){
             message = {
                         type: "template",
                         altText: "this is a buttons template",
@@ -138,7 +138,8 @@ const returnMessage = (event) =>{
                             ]
                         }
         }else if(event.message.text === 'カルーセル'){
-            message = {
+            weatherData().then((tokyoWeather) => {
+                message = {
                         type: "template",
                         altText: "this is a carousel template",
                         template: {
@@ -191,6 +192,7 @@ const returnMessage = (event) =>{
                             ]
                             }
             }
+        });
         }
             event.reply(message);
         }
