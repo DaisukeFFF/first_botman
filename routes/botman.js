@@ -8,6 +8,8 @@ const config = require('config');
 const bot = require('../lib/lineBot');
 var FeedParser = require('feedparser');
 var feed = 'view-source:http://rss.exblog.jp/rss/exblog/goodblog/index.xml';
+var feedreq = request(feed);
+
 const router = express.Router();
 
 const parser = bodyParser.json({
@@ -214,7 +216,7 @@ router.get('/cron', (req,res) => {
 });
 
 router.get('/feed', (req, res) =>{
-    var req = request(feed);
+    var req = feedreq;
     var feedparser = new FeedParser({});
  
     var items = [];
