@@ -8,7 +8,6 @@ const config = require('config');
 const bot = require('../lib/lineBot');
 const router = express.Router();
 
-
 const parser = bodyParser.json({
     verify: (req, res, buf, encoding) => {
         req.rawBody = buf.toString(encoding);
@@ -117,7 +116,7 @@ const returnMessage = (event) =>{
                         altText: "this is a buttons template",
                         template: {
                             type: "buttons",
-                            thumbnailImageUrl: "https://example.com/bot/images/image.jpg",
+                            thumbnailImageUrl: "http://openweathermap.org/img/w/10d.png",
                             title: "Menu",
                             text: "Please select",
                             actions: [
