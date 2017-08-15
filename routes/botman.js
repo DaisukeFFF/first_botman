@@ -121,11 +121,11 @@ const returnMessage = (event) =>{
                             title: "現在の天気",
                             text: "天候:" + tokyoWeather.weather[0].main,
                             actions: [
-                                {
-                                  type: "message",
-                                  label: "OK",
-                                  text: "OK!"
-                                }
+                                // {
+                                //   type: "message",
+                                //   label: "OK"
+                                //   text: "OK!"
+                                // }
                             ]
                         }
             }
