@@ -196,7 +196,7 @@ const returnMessage = (event) =>{
                         }
                     }
             event.reply(message);
-        }}
+        }
     });
 }
 
