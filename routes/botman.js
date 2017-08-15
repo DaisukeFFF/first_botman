@@ -258,7 +258,7 @@ bot.on('message', (event) => {
     if(event.message.type !== 'text'){
         return;
     }
-    event.source.profile().then((lineProfile) =>{
+    setlineProfile(event.source).then((lineProfile) =>{
         console.log(lineProfile.displayName +' : '+ event.message.text);
     });
     returnMessage(event);
