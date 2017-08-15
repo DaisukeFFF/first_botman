@@ -8,7 +8,6 @@ const config = require('config');
 const bot = require('../lib/lineBot');
 var FeedParser = require('feedparser');
 var feed = 'view-source:http://rss.exblog.jp/rss/exblog/goodblog/index.xml';
-var feedreq = request(feed);
 
 const router = express.Router();
 
