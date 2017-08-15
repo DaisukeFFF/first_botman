@@ -91,25 +91,25 @@ const returnMessage = (event) =>{
             });
         }else if(event.message.text === 'お天気'){
             message = {
-                type: 'template',
-                altText: 'this is a buttons template',
-                template: {
-                    type: 'buttons',
-                    thumbnailImageUrl: 'http://openweathermap.org/img/w/10d.png',
-                    title: 'Weather',
-                    text: '現在の天気',
-                    actions: [{
-                        type:'message',
-                        label: 'OK',
-                        text: 'OK!'
-                    },
-                    {
-                        type:'message',
-                        label: 'NO',
-                        text: 'NO!'
-                    }]
-                }
-            };
+                        type: "template",
+                        altText: "this is a confirm template",
+                        template: {
+                            type: "confirm",
+                            text: "Are you sure?",
+                            actions: [
+                                {
+                                  type: "message",
+                                  label: "Yes",
+                                  text: "yes"
+                                },
+                                {
+                                  type: "message",
+                                  label: "No",
+                                  text: "no"
+                                }
+                            ]
+                        }
+            }
             event.reply(message);
         }
     });
