@@ -116,7 +116,7 @@ const returnMessage = (event) =>{
                         altText: "this is a buttons template",
                         template: {
                             type: "buttons",
-                            thumbnailImageUrl: "http://openweathermap.org/img/w/10d.png",
+                            thumbnailImageUrl: "https://openweathermap.org/img/w/10d.png",
                             title: "Menu",
                             text: "Please select",
                             actions: [
@@ -202,7 +202,7 @@ bot.on('message', (event) => {
         return;
     }
     event.source.profile().then((lineProfile) =>{
-        console.log(event.displayName +' : '+ event.message.text);
+        console.log(lineProfile.displayName +' : '+ event.message.text);
     });
     returnMessage(event);
 });
