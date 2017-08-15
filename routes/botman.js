@@ -125,7 +125,7 @@ const returnMessage = (event) =>{
                             actions: [
                                 {
                                   type: "message",
-                                  label: "OK"
+                                  label: "OK",
                                   text: "OK!"
                                 }
                             ]
